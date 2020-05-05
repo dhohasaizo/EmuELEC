@@ -4,8 +4,7 @@
 # Copyright (C) 2019-present SumavisionQ5 (https://github.com/SumavisionQ5)
 # Modifications by Shanti Gilbert (https://github.com/shantigilbert)
 
-# 12/07/2019 use mpv for all splash 
-# 19/01/2020 use ffplay for all splash 
+# 03/05/2020 use mpv again for all splash 
 # 06/02/2020 move splash to roms folder and add global splash support
 
 . /etc/profile
@@ -86,14 +85,14 @@ fi
 
 if [[ -f "/storage/.config/emuelec/configs/novideo" ]] && [[ ${VIDEO} != "1" ]]; then
 	if [ "$PLATFORM" != "intro" ]; then
-			ffplay -autoexit -fs "$SPLASH" > /dev/null 2>&1
+			mpv -fs "$SPLASH" > /dev/null 2>&1
 	fi 
 else
 # Show intro video
 	SPLASH=${VIDEOSPLASH}
 	set_audio alsa
 	#[ -e /storage/.config/asound.conf ] && mv /storage/.config/asound.conf /storage/.config/asound.confs
-	ffplay -autoexit -fs "$SPLASH" > /dev/null 2>&1
+	mpv -fs "$SPLASH" > /dev/null 2>&1
 	touch "/storage/.config/emuelec/configs/novideo"
 	#[ -e /storage/.config/asound.confs ] && mv /storage/.config/asound.confs /storage/.config/asound.conf
 fi
